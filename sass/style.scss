@@ -23,104 +23,155 @@ body {
 }
 
 nav {
-    position: absolute;
-    top: calc(50% - 150px);
-    left: calc(50% - 150px);
-    width: 300px;
-    height: 300px;
-    transform: scale(.25);
-    transition: transform .32s;
-    background: #e28413;
-    pointer-events: all;
-
-    ul {
+    @media screen and (max-width: 570px) {
+        
+        position: absolute;
+        top: -110px;
+        left: -110px;
         width: 300px;
         height: 300px;
-        min-width: 300px;
-        min-height: 300px;
-        padding-left: 20px;
-        list-style: none;
+        transform: scale(.25);
+        transition: top .13s .32s, left .13s .32s, transform .32s;
+        background: #e28413;
+        pointer-events: all;
 
-        li {
-            width: 100%;
-            height: 20%;
-            line-height: 60px;
-            a {
-                position: relative;
-                text-decoration: none;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                font-weight: 800;
-                font-size: 1.6em;
-                color: #fff;
-                pointer-events: none;
-                &:after {
-                    content: '';
-                    position: absolute;
-                    display: block;
-                    top: 2px;
-                    left: 0;
-                    height: 1em;
-                    background: #fff;
-                    width: 100%;
-                    opacity: 1;
-                    transform-origin: 0 0;
-                    transition: opacity .2s .2s;
+        ul {
+            width: 300px;
+            height: 300px;
+            min-width: 300px;
+            min-height: 300px;
+            padding-left: 20px;
+            list-style: none;
+
+            li {
+                width: 100%;
+                height: 20%;
+                line-height: 60px;
+                a {
+                    position: relative;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    font-weight: 800;
+                    font-size: 1.6em;
+                    color: #fff;
+                    pointer-events: none;
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        display: block;
+                        top: 2px;
+                        left: 0;
+                        height: 1em;
+                        background: #fff;
+                        width: 100%;
+                        opacity: 1;
+                        transform-origin: 0 0;
+                        transition: opacity .2s .2s;
+                    }
                 }
-            }
-        }
-    }
-
-    .close {
-        position: absolute;
-        display: block;
-        text-align: center;
-        width: 25px;
-        height: 25px;
-        line-height: 25px;
-        right: 0;
-        top: 0;
-        font-size: 20px;
-        font-weight: 800;
-        border-radius: 50%;
-        transform: translate(-10px, 17px);
-        background: #fff;
-        cursor: pointer;
-        opacity: 0;
-        transition: all .2s ease;
-        color: #e28413;
-        &:active {
-            transition: transform .2s ease;
-            transform: translate(-10px, 17px)
-                    scale(.9);
-        }
-    }
-}
-
-.is-active {
-    nav {
-        transform: scale(1);
-        transition: transform .32s;
-        pointer-events: none;
-
-        a {
-            pointer-events: all;
-            transition: margin-left .2s ease;
-            &:hover {
-                margin-left: 5px;
-                transition: margin-left .2s ease;
-            }
-            &:after {
-                opacity: 0;
-                transform-origin: 0 0;
-                transition: opacity .2s .1s;
             }
         }
 
         .close {
-            opacity: 1;
-            transition: opacity .3s ease .2s;
-            pointer-events: all;
+            position: absolute;
+            display: block;
+            text-align: center;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            right: 0;
+            top: 0;
+            font-size: 20px;
+            font-weight: 800;
+            border-radius: 50%;
+            transform: translate(-10px, 17px);
+            background: #fff;
+            cursor: pointer;
+            opacity: 0;
+            transition: all .2s ease;
+            color: #e28413;
+            &:active {
+                transition: transform .2s ease;
+                transform: translate(-10px, 17px)
+                        scale(.9);
+            }
+        }
+    }
+
+    @media screen and (min-width: 571px) {
+
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        pointer-events: none;
+
+        ul {
+            width: auto;
+            margin: 0 auto;
+            list-style: none;
+            padding: 0;
+
+            li {
+                display: inline-block;
+                a {
+                    display: block;
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    padding: 1em .5em;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    font-weight: 800;
+                    font-size: 1em;
+                    color: #fff;
+                    pointer-events: all;
+                    transition: color .15s;
+
+                    &:hover {
+                        color: rgba(255, 255, 255, .6);
+                        transition: color .15s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+
+    .is-active {
+        nav {
+            top: 0;
+            left: 0;
+            transform: scale(1);
+            transition: transform .32s .13s, top .13s, left .13s;
+            pointer-events: none;
+
+            a {
+                pointer-events: all;
+                transition: margin-left .2s ease;
+                &:hover {
+                    margin-left: 5px;
+                    transition: margin-left .2s ease;
+                }
+                &:after {
+                    opacity: 0;
+                    transform-origin: 0 0;
+                    transition: opacity .2s .1s;
+                }
+            }
+
+            .close {
+                opacity: 1;
+                transition: opacity .3s ease .2s;
+                pointer-events: all;
+            }
         }
     }
 }
